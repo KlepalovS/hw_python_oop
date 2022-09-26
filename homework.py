@@ -144,15 +144,15 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-    key_to_training: Dict[str, Type(Training)] = {
+    key_to_training: Dict[str, Type[Training]] = {
         'SWM': Swimming,
         'RUN': Running,
         'WLK': SportsWalking,
     }
     if workout_type in key_to_training:
         return key_to_training[workout_type](*data)
-    else:
-        raise KeyError(f'Неопознанный тип тренировки {workout_type}.')
+
+    raise KeyError(f'Неопознанный тип тренировки {workout_type}.')
 
 
 def main(training: Training) -> None:
